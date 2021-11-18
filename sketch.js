@@ -78,9 +78,10 @@ pontuacao + Math.round(frameRate
 ()/60)
      solo.velocityX = -(4+3*pontuacao/100);
      // condição para pular
-    if(keyDown('space') && trex.y >= 170){
+    if (touches.length>0 && trex.y >= 170){
       trex.velocityY = -10;
       jumpSound.play();
+      touches=[];
     }
 
     if(solo.x < 0){
@@ -116,7 +117,8 @@ pontuacao + Math.round(frameRate
      gameOver.visible = true;
      restart.visible = true;
     
-     if(mousePressedOver(restart)){
+     if(touches.length>0){
+       touches=[];
         reset();
      }
   }
